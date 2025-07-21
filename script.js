@@ -7,7 +7,7 @@ const projectsData = [
         description: "Built with Bootstrap, HTML5, CSS3, and jQuery, it includes flexible vertical and horizontal layouts, reusable components, widgets, and pre-built pages—perfect for creating dynamic dashboards and enterprise applications.",
         image: "/images/main.png",
         demoUrl: "https://2d-admin-panel.vercel.app/",
-        githubUrl: "https://github.com/Sovannthai/2D-Admin-Panel",
+        githubUrl: "https://github.com/srosthai/2D-Admin-Panel",
         status: "completed",
         technologies: ["Bootstrap 5", "HTML5", "CSS3", "jQuery.."]
     },
@@ -17,7 +17,7 @@ const projectsData = [
         description: "It offers a fully responsive design, extensive customization options, and a rich collection of UI components. Ideal for building modern web applications, it includes multiple layouts, themes, and plugins to enhance user experience.",
         image: "/images/main-adminTo.png",
         demoUrl: "https://admin-panel-dashboard-eta.vercel.app/",
-        githubUrl: "https://github.com/Sovannthai/AdminTo-Dashboard-Panel",
+        githubUrl: "https://github.com/srosthai/AdminTo-Dashboard-Panel",
         status: "completed",
         technologies: ["Bootstrap 5", "HTML5", "CSS3", "jQuery..."]
     },
@@ -27,7 +27,7 @@ const projectsData = [
         description: "Free Dashboard, Click to view demo here's the link. And you can download the source code from GitHub.",
         image: "/images/modern-dash.webp",
         demoUrl: "https://modern-dash.vercel.app/",
-        githubUrl: "https://github.com/Sovannthai/modern-dashboard",
+        githubUrl: "https://github.com/srosthai/modern-dashboard",
         status: "completed",
         technologies: ["Bootstrap 5", "HTML5", "CSS3", "jQuery..."]
     },
@@ -37,7 +37,7 @@ const projectsData = [
         description: "Free Dashboard, Click to view demo here's the link. And you can download the source code from GitHub.",
         image: "/images/dashly.webp",
         demoUrl: "https://adminpanel-templete.vercel.app/",
-        githubUrl: "https://github.com/Sovannthai/AdminPanel-Dashly",
+        githubUrl: "https://github.com/srosthai/AdminPanel-Dashly",
         status: "completed",
         technologies: ["Bootstrap 5", "HTML5", "CSS3", "jQuery..."]
     },
@@ -47,7 +47,7 @@ const projectsData = [
         description: "Modern Admin Dashboard Template, built with Bootstrap 5, HTML5, CSS3, and jQuery. It features a fully responsive design, multiple layouts, and a rich collection of UI components.",
         image: "/images/loper.webp",
         demoUrl: "https://adminpanel-loper.vercel.app/",
-        githubUrl: "https://github.com/Sovannthai/AdminLoper-Dashboard",
+        githubUrl: "https://github.com/srosthai/AdminLoper-Dashboard",
         status: "completed",
         technologies: ["Bootstrap 5", "HTML5", "CSS3", "jQuery..."]
     },
