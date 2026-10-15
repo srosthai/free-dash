@@ -179,8 +179,9 @@ a {
   display: inline-grid;
 }
 
-.icon-swap svg {
+.icon-swap [data-icon] {
   grid-area: 1 / 1;
+  display: inline-flex;
   opacity: 0;
   transform: scale(0.92);
   transition:
@@ -188,8 +189,8 @@ a {
     transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.icon-swap[data-state='moon'] svg[data-icon='moon'],
-.icon-swap[data-state='sun'] svg[data-icon='sun'] {
+.icon-swap[data-state='moon'] [data-icon='moon'],
+.icon-swap[data-state='sun'] [data-icon='sun'] {
   opacity: 1;
   transform: none;
 }
@@ -549,7 +550,7 @@ a {
   }
 
   .site-nav,
-  .icon-swap svg,
+  .icon-swap [data-icon],
   .menu-button,
   .theme-button,
   .action,

@@ -1,12 +1,11 @@
 ---
+import { Icon } from 'astro-icon/components';
 ---
 
 <header class="site-header">
   <a class="skip" href="#projects">Skip to templates</a>
   <a class="brand" href="#top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
-    </svg>
+    <Icon name="lucide:send" size={22} aria-hidden="true" />
     Free-Dash
   </a>
   <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -21,13 +20,8 @@
   </nav>
   <button class="theme-button" type="button" aria-pressed="false" aria-label="Switch to dark">
     <span class="icon-swap" data-state="moon">
-      <svg data-icon="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-      </svg>
-      <svg data-icon="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4"></circle>
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-      </svg>
+      <span data-icon="moon"><Icon name="lucide:moon" size={18} aria-hidden="true" /></span>
+      <span data-icon="sun"><Icon name="lucide:sun" size={18} aria-hidden="true" /></span>
     </span>
   </button>
 </header>
