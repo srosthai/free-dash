@@ -1,5 +1,16 @@
 {
+  "name": "free-dash",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
   "dependencies": {
-    "vercel": "^41.7.3"
+    "@fontsource/big-shoulders-display": "^5.2.8",
+    "@fontsource/big-shoulders-text": "^5.2.8",
+    "astro": "^5.14.4"
   }
 }
