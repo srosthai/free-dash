@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { Template } from '../data/templates';
+
+interface Props {
+  template: Template;
+  preview: ImageMetadata;
+  lead?: boolean;
+}
+
+const { template, preview, lead = false } = Astro.props;
+const statusLabel =
+  template.status === 'completed'
+    ? 'Completed'
+    : template.status === 'coming-soon'
+      ? 'Coming soon'
+      : 'Planned';
+---
+
+<article
+  class:list={['docket', { 'docket-lead': lead, plate: template.status !== 'completed' }]}
+  id={lead ? 'projects' : undefined}
+>
+  <div class="docket-copy">
+    <p class="stamp">{statusLabel}</p>
+    {lead ? <h1>{template.title}</h1> : <h2>{template.title}</h2>}
+    <p class="dek">{template.description}</p>
+    <p class="stack">{template.technologies.join(', ')}</p>
+    {
+      template.status === 'completed' && template.demoUrl && template.githubUrl && (
+        <div class="actions">
+          <a class="action action-primary" href={template.demoUrl} target="_blank" rel="noreferrer">
+            Open demo
+          </a>
+          <a class="action" href={template.githubUrl} target="_blank" rel="noreferrer">
+            Get the source
+          </a>
+        </div>
+      )
+    }
+    {
+      template.status === 'coming-soon' && template.progress !== undefined && (
+        <div>
+          <p class="measure">
+            <span>Development progress</span>
+            <span>{template.progress}%</span>
+          </p>
+          <div class="scale" style={`--fill: ${template.progress}%`}>
+            <span></span>
+          </div>
+        </div>
+      )
+    }
+    {template.status === 'planned' && template.startDate && <p class="when">Expected {template.startDate}</p>}
+  </div>
+  <figure class="proof">
+    <Image
+      src={preview}
+      alt=""
+      widths={[480, 800, 1200]}
+      sizes={lead ? '(min-width: 800px) 52vw, 100vw' : '(min-width: 800px) 42vw, 100vw'}
+      loading={lead ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+    <span class="crop" aria-hidden="true"></span>
+  </figure>
+</article>

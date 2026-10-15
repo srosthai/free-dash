@@ -1,13 +1,37 @@
 ---
+import type { ImageMetadata } from 'astro';
 import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Docket from '../components/Docket.astro';
+import { templates } from '../data/templates';
+
+const previews = import.meta.glob<{ default: ImageMetadata }>('../assets/previews/*', {
+  eager: true,
+});
+
+function previewFor(file: string) {
+  const entry = Object.entries(previews).find(([path]) => path.endsWith(`/${file}`));
+  if (!entry) throw new Error(`Missing preview ${file}`);
+  return entry[1].default;
+}
+
+const [lead, ...rest] = templates;
+if (!lead) throw new Error('Catalog is empty');
 ---
 
 <Base
   title="Free-Dash | Dashboard templates"
-  description="Free dashboard templates by HE Sovannthai."
+  description="Free dashboard templates by HE Sovannthai. Open a live demo or get the source."
 >
-  <main>
-    <h1>Free-Dash</h1>
-    <p>Free dashboard templates.</p>
+  <SiteHeader />
+  <main class="shelf" id="top">
+    <p class="welcome">
+      Welcome to our free dashboard template. This modern, responsive admin panel provides essential components and
+      layouts for your web applications. Easily customize it to match your project's requirements.
+    </p>
+    <Docket template={lead} preview={previewFor(lead.image)} lead />
+    {rest.map((template) => <Docket template={template} preview={previewFor(template.image)} />)}
   </main>
+  <SiteFooter />
 </Base>
