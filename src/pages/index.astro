@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import Base from '../layouts/Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import Hero from '../components/Hero.astro';
 import Docket from '../components/Docket.astro';
 import Reveal from '../components/Reveal.astro';
 import ScrollTop from '../components/ScrollTop.astro';
@@ -27,11 +28,8 @@ if (!lead) throw new Error('Catalog is empty');
   description="Free dashboard templates by HE Sovannthai. Open a live demo or get the source."
 >
   <SiteHeader />
-  <main class="shelf" id="top">
-    <p class="welcome">
-      Welcome to our free dashboard template. This modern, responsive admin panel provides essential components and
-      layouts for your web applications. Easily customize it to match your project's requirements.
-    </p>
+  <main class="shelf">
+    <Hero />
     <Docket template={lead} preview={previewFor(lead.image)} lead />
     {rest.map((template) => <Docket template={template} preview={previewFor(template.image)} />)}
   </main>
