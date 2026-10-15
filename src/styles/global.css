@@ -155,8 +155,24 @@ a {
 .theme-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.35rem 0.7rem;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+}
+
+.icon-swap {
+  display: inline-grid;
+}
+
+.icon-swap svg {
+  grid-area: 1 / 1;
+  opacity: 0;
+}
+
+.icon-swap[data-state='moon'] svg[data-icon='moon'],
+.icon-swap[data-state='sun'] svg[data-icon='sun'] {
+  opacity: 1;
 }
 
 .welcome {
