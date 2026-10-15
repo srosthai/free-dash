@@ -28,7 +28,11 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-color: var(--ink) var(--sheet);
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
