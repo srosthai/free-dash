@@ -1,22 +1,23 @@
 :root {
-  --sheet: #c5d8ea;
-  --ink: #0e2a43;
-  --muted: #1a4568;
-  --paste: #f4f8fb;
-  --stamp: #8e1b1b;
-  --rule: color-mix(in srgb, var(--ink) 28%, transparent);
-  --focus: #8e1b1b;
+  --sheet: #ffffff;
+  --ink: #111111;
+  --muted: #3a3a3a;
+  --paste: #ffffff;
+  --stamp: #111111;
+  --rule: color-mix(in srgb, var(--ink) 22%, transparent);
+  --focus: #111111;
   --header: 4.5rem;
   color-scheme: light;
 }
 
 :root[data-theme='dark'] {
-  --sheet: #0e2a43;
-  --ink: #e7f0f7;
-  --muted: #c5d8ea;
-  --paste: #16344d;
-  --stamp: #f0b4ae;
-  --focus: #f0b4ae;
+  --sheet: #000000;
+  --ink: #ffffff;
+  --muted: #d6d6d6;
+  --paste: #000000;
+  --stamp: #ffffff;
+  --rule: color-mix(in srgb, var(--ink) 28%, transparent);
+  --focus: #ffffff;
   color-scheme: dark;
 }
 
@@ -248,9 +249,15 @@ a {
 }
 
 .action:hover {
-  background: var(--stamp);
-  border-color: var(--stamp);
-  color: var(--paste);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--sheet);
+}
+
+.action-primary:hover,
+.to-top:hover {
+  background: var(--sheet);
+  color: var(--ink);
 }
 
 .proof {
@@ -258,6 +265,7 @@ a {
   margin: 0;
   padding: 1.1rem;
   background: var(--paste);
+  border: 1px solid var(--rule);
 }
 
 .proof img {
@@ -452,11 +460,6 @@ a {
   background: var(--ink);
   border: 1px solid var(--ink);
   cursor: pointer;
-}
-
-.to-top:hover {
-  background: var(--stamp);
-  border-color: var(--stamp);
 }
 
 @media (prefers-reduced-motion: reduce) {
