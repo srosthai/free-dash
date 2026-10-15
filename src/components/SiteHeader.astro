@@ -51,8 +51,11 @@
 
   themeButton?.addEventListener('click', () => {
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme-switching', '');
     localStorage.setItem('theme', next);
     paintTheme(next);
+    void document.body.offsetHeight;
+    requestAnimationFrame(() => root.removeAttribute('data-theme-switching'));
   });
 
   function closeMenu() {
