@@ -1,0 +1,25 @@
+<button class="to-top" type="button" hidden>Back to top</button>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.to-top');
+  if (button) {
+    function atBottom() {
+      const root = document.documentElement;
+      return window.scrollY + window.innerHeight >= root.scrollHeight - 48;
+    }
+
+    function update() {
+      if (!button) return;
+      button.hidden = !atBottom();
+    }
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    button.addEventListener('click', () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  }
+</script>

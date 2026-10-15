@@ -439,6 +439,26 @@ a {
   }
 }
 
+.to-top {
+  position: fixed;
+  z-index: 20;
+  right: 4vw;
+  bottom: 1.25rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.9rem;
+  font: inherit;
+  font-weight: 500;
+  color: var(--paste);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+}
+
+.to-top:hover {
+  background: var(--stamp);
+  border-color: var(--stamp);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
