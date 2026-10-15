@@ -144,6 +144,20 @@ a {
   background: transparent;
   border: 1px solid var(--ink);
   cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 140ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.menu-button:active,
+.theme-button:active,
+.action:active,
+.to-top:active {
+  transform: scale(0.97);
+  transition-duration: 0ms;
 }
 
 .menu-button {
@@ -168,11 +182,16 @@ a {
 .icon-swap svg {
   grid-area: 1 / 1;
   opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .icon-swap[data-state='moon'] svg[data-icon='moon'],
 .icon-swap[data-state='sun'] svg[data-icon='sun'] {
   opacity: 1;
+  transform: none;
 }
 
 .welcome {
@@ -264,16 +283,18 @@ a {
   color: var(--paste);
 }
 
-.action:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--sheet);
-}
+@media (hover: hover) and (pointer: fine) {
+  .action:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--sheet);
+  }
 
-.action-primary:hover,
-.to-top:hover {
-  background: var(--sheet);
-  color: var(--ink);
+  .action-primary:hover,
+  .to-top:hover {
+    background: var(--sheet);
+    color: var(--ink);
+  }
 }
 
 .proof {
@@ -303,22 +324,6 @@ a {
     linear-gradient(var(--ink), var(--ink)) left bottom / 1px 16px no-repeat,
     linear-gradient(var(--ink), var(--ink)) right bottom / 16px 1px no-repeat,
     linear-gradient(var(--ink), var(--ink)) right bottom / 1px 16px no-repeat;
-}
-
-.docket-lead .proof {
-  animation: step-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes step-in {
-  0% {
-    transform: translateY(14%);
-  }
-  72% {
-    transform: translateY(-1.5%);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
 
 .plate .proof img {
@@ -408,7 +413,7 @@ a {
   }
 
   .site-nav {
-    display: none;
+    display: block;
     position: absolute;
     left: 0;
     right: 0;
@@ -417,10 +422,21 @@ a {
     padding: 0.5rem 4vw 1rem;
     background: var(--sheet);
     border-bottom: 1px solid var(--rule);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition:
+      opacity 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 200ms;
   }
 
   .site-nav.is-open {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
   }
 
   .site-nav ul {
@@ -476,6 +492,17 @@ a {
   background: var(--ink);
   border: 1px solid var(--ink);
   cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 140ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+:root[data-theme-switching],
+:root[data-theme-switching] * {
+  transition: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -483,7 +510,17 @@ a {
     scroll-behavior: auto;
   }
 
-  .docket-lead .proof {
-    animation: none;
+  .docket-reveal.awaiting {
+    opacity: 1;
+    transform: none;
+  }
+
+  .site-nav,
+  .icon-swap svg,
+  .menu-button,
+  .theme-button,
+  .action,
+  .to-top {
+    transition: none;
   }
 }
