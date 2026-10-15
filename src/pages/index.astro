@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Docket from '../components/Docket.astro';
+import Reveal from '../components/Reveal.astro';
 import { templates } from '../data/templates';
 
 const previews = import.meta.glob<{ default: ImageMetadata }>('../assets/previews/*', {
@@ -34,4 +35,5 @@ if (!lead) throw new Error('Catalog is empty');
     {rest.map((template) => <Docket template={template} preview={previewFor(template.image)} />)}
   </main>
   <SiteFooter />
+  <Reveal />
 </Base>

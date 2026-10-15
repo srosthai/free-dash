@@ -19,7 +19,7 @@ const statusLabel =
 ---
 
 <article
-  class:list={['docket', { 'docket-lead': lead, plate: template.status !== 'completed' }]}
+  class:list={['docket', { 'docket-lead': lead, 'docket-reveal': !lead, plate: template.status !== 'completed' }]}
   id={lead ? 'projects' : undefined}
 >
   <div class="docket-copy">
