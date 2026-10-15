@@ -424,6 +424,21 @@ a {
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .docket-reveal.awaiting {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .docket-reveal.is-shown {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
