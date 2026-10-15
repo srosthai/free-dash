@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description: string;
@@ -16,6 +18,15 @@ const { title, description } = Astro.props;
     <meta name="description" content={description} />
     <meta name="author" content="HE Sovannthai" />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var theme =
+          stored ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <slot />

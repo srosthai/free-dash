@@ -1,0 +1,89 @@
+---
+---
+
+<header class="site-header">
+  <a class="skip" href="#projects">Skip to templates</a>
+  <a class="brand" href="#top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
+    </svg>
+    Free-Dash
+  </a>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+    Menu
+  </button>
+  <nav class="site-nav" id="site-nav" aria-label="Page">
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="theme-button" type="button" aria-pressed="false">
+    <span class="theme-label">Light</span>
+  </button>
+</header>
+
+<script>
+  const root = document.documentElement;
+  const themeButton = document.querySelector('.theme-button');
+  const themeLabel = themeButton?.querySelector('.theme-label');
+  const menuButton = document.querySelector('.menu-button');
+  const nav = document.querySelector('.site-nav');
+
+  function paintTheme(theme: string) {
+    const dark = theme === 'dark';
+    root.setAttribute('data-theme', theme);
+    themeButton?.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    if (themeLabel) themeLabel.textContent = dark ? 'Dark' : 'Light';
+  }
+
+  paintTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+  themeButton?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    paintTheme(next);
+  });
+
+  function closeMenu() {
+    nav?.classList.remove('is-open');
+    menuButton?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
+
+  menuButton?.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') !== 'true';
+    menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    nav?.classList.toggle('is-open', open);
+    document.body.classList.toggle('menu-open', open);
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.site-nav a'));
+  const sections = links
+    .map((link) => {
+      const id = link.getAttribute('href')?.slice(1);
+      const section = id ? document.getElementById(id) : null;
+      return section ? { link, section } : null;
+    })
+    .filter((item): item is { link: HTMLAnchorElement; section: HTMLElement } => item !== null);
+
+  function markCurrent() {
+    const line = window.scrollY + window.innerHeight * 0.3;
+    let current = sections[0];
+    for (const item of sections) {
+      if (item.section.offsetTop <= line) current = item;
+    }
+    for (const item of sections) {
+      if (item === current) item.link.setAttribute('aria-current', 'true');
+      else item.link.removeAttribute('aria-current');
+    }
+  }
+
+  markCurrent();
+  window.addEventListener('scroll', markCurrent, { passive: true });
+</script>
