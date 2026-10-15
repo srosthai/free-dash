@@ -277,6 +277,22 @@ a {
     linear-gradient(var(--ink), var(--ink)) right bottom / 1px 16px no-repeat;
 }
 
+.docket-lead .proof {
+  animation: step-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes step-in {
+  0% {
+    transform: translateY(14%);
+  }
+  72% {
+    transform: translateY(-1.5%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .plate .proof img {
   filter: grayscale(1) contrast(1.15);
   opacity: 0.72;
@@ -401,5 +417,15 @@ a {
 
   .site-footer {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .docket-lead .proof {
+    animation: none;
   }
 }
